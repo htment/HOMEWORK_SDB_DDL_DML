@@ -145,7 +145,7 @@ staff_list             | (нет первичного ключа)
 store                  | store_id
 ```
 
--- 3.1. Убираем права на внесение, изменение и удаление данных из sakila
+# 3. Убираем права на внесение, изменение и удаление данных из sakila
 ```
 # Сначала отзываем глобальные права (которые даны через ON *.*)
 
@@ -153,15 +153,15 @@ REVOKE ALL PRIVILEGES ON *.* FROM 'sys_temp'@'%';
 ```
 ```
 Затем даем только нужные права на базу sakila
-GRANT SELECT, SHOW VIEW, EXECUTE ON sakila.* TO 'sys_temp'@'%';
+GRANT SELECT ON sakila.* TO 'sys_temp'@'%';
 ```
 ```
  Проверяем результат
 SHOW GRANTS FOR 'sys_temp'@'%';
 ```
 ```
-GRANT USAGE ON *.* TO `sys_temp`@`%`
-GRANT SELECT, EXECUTE, SHOW VIEW ON `sakila`.* TO `sys_temp`@`%`
+GRANT USAGE GRANT SELECT ON `sakila`.* TO `sys_temp`@`%`ON *.* TO `sys_temp`@`%`
+
 ```
 
 ![alt text](image-14.png)
@@ -169,3 +169,4 @@ GRANT SELECT, EXECUTE, SHOW VIEW ON `sakila`.* TO `sys_temp`@`%`
 ```
 SHOW GRANTS FOR 'sys_temp'@'%';
 ```
+![alt text](image-15.png)
